@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>LIST OF FRUITS</h1>
+    <div class="display"></div>
+    <div class="button">
+        <button id="endBtn">Remove the last fruits</button>
+        <button id="startBtn">remove the start fruits</button>
+    </div>
+    <div>
+        <input type="text" placeholder="enter the fruit name" id="input">
+        <button id="add-top"> add in top</button>
+        <button id="add-btm"> add in buttom</button>
+    </div>
+    <script>
+        let div=document.querySelector(".display")
+
+        let fruits=["apple","orange","green apple","mango","cocanut","banana"];
+        function displayfruits(){
+            let str=""
+            for(let i=0;i<fruits.length;i++){
+            str+=`<li>${fruits[i]}</li>`
+        }
+
+        div.innerHTML = str
+    }
+    displayfruits()
+    let endBtn=document.getElementById("end")
+    let startBtn=document.getElementById("start")
+
+    endBtn.addEventListener("click", () => {
+        fruits.pop()
+        displayfruits
+    });
+
+    let addtop=document.getElementById("add-top")
+    let addbtm=document.getElementById("add-btm")
+
+    addtop.addEventListener("click", () => {
+        let fruit=document.getElementById("input").value
+    if(fruit.trim()){
+    fruits.unshift(fruit)
+    displayfruits()
+    document.getElementById("input").value=""
+}
+else{
+    alert("provide fruit name")
+}
+    })
+
+    addbtm.addEventListener("click",() => {
+        let fruit=document.getElementById("input").value
+if(fruit.trim()){
+    fruits.push(fruit)
+    displayfruits()
+    document.getElementById("input").value=""
+}
+else{
+    alert("provide fruit name")
+}
+    })
+    </script>
+</body>
+</html>

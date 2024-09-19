@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .watch {
+            margin-top: 20vh;
+        }
+
+        .stopwatch {
+            width: 350px;
+            box-shadow: 0 0 20px black;
+            border-radius: 18px;
+        }
+
+        .stopwatch h1 {
+            color: white;
+            font-size: 5rem;
+        }
+
+        .bt button {
+            font-size: 2rem;
+            width: 5rem;
+            border-radius: 24px;
+            /* transition: all 0.3s linear 0s; */
+        }
+
+        /* button:hover {
+            width: 100px;
+        } */
+
+        #start-btn {
+            background: rgb(129, 240, 88);
+        }
+
+        #reset-btn {
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container watch">
+        <div class="stopwatch d-flex justify-content-center m-auto ">
+            <div class="d-flex">
+                <h1 id="min">00</h1>
+                <h1>:</h1>
+            </div>
+            <div class="d-flex">
+                <h1 id="sec">00</h1>
+                <h1>.</h1>
+            </div>
+            <div class="d-flex">
+                <h1 id="m-sec">00</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5 text-center bt">
+        <button class="btn mt-5 text-white" id="start-btn"><i class="fa-solid fa-play"></i></button>
+        <button class="btn ms-5 text-white" id="reset-btn"><i class="fa-solid fa-stopwatch text-primary"></i></button>
+    </div>
+    <div class="container text-white mt-5" id="display">
+    </div>
+    
+    <!-- MDB Script -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script>
+        let start_btn = document.querySelector('#start-btn');
+        let stop_btn = document.querySelector('#stop-btn');
+        let reset_btn = document.querySelector('#reset-btn');
+        let min_display = document.querySelector('#min');
+        let sec_display = document.querySelector('#sec');
+        let m_sec_display = document.querySelector('#m-sec');
+
+        //variables
+        let interval;
+        let milliseconds = 0;
+        let seconds = 0;
+        let minutes = 0;
+        let a=''
+        let c=0;
+        start_btn.addEventListener('click', () => {
+            if (!interval) {
+                start();
+            }
+            else {
+                clearInterval(interval);
+                interval = undefined;
+                start_btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+                start_btn.style.background = ` rgb(88, 88, 240)`;
+                reset_btn.innerHTML = '<i class="fa-solid fa-repeat"></i>';
+                reset_btn.style.background = ` #f53d2c`;
+            }
+
+        });
+        
+        function start() {
+            if (!interval) interval = setInterval(() => {
+                milliseconds++;
+                if (milliseconds == 100) {
+                    milliseconds = 0;
+                    seconds++;
+                    if (seconds == 60) {
+                        seconds = 0;
+                        minutes++;
+                    }
+                }
+                m_sec_display.innerText = milliseconds < 10 ? "0" + milliseconds : milliseconds;
+                sec_display.innerText = seconds < 10 ? "0" + seconds : seconds;
+                min_display.innerText = minutes < 10 ? "0" + minutes : minutes;
+
+                //changing the play btn to loop btn
+
+                start_btn.innerHTML = `<i class="fa-solid fa-stop"></i>`
+                start_btn.style.background = `#f53d2c`
+
+                reset_btn.innerHTML = `<i class="fa-solid fa-stopwatch text-primary">`
+                reset_btn.style.background = 'white'
+
+            }, 10);
+        }
+        function reset() {
+            milliseconds = 0;
+            seconds = 0;
+            minutes = 0;
+            min_display.innerText = '0' + minutes;
+            sec_display.innerText = '0' + seconds;
+            m_sec_display.innerText = '0' + milliseconds;
+            reset_btn.innerHTML = `<i class="fa-solid fa-stopwatch text-primary">`
+            reset_btn.style.background = 'white'
+            a='';
+            c=0;
+            document.querySelector('#display').innerHTML=a;
+        }
+        function lap() {
+            c++;
+           a += `<h4 class='ms-5'>LAP ${c}.  ${min_display.innerText+':'+ sec_display.innerText +'.'+ m_sec_display.innerText}</h4>`;
+           document.querySelector('#display').innerHTML=a;
+        }
+        reset_btn.addEventListener('click', () => {
+            if (!interval) {
+                clearInterval(interval);
+                interval = undefined;
+                reset();
+            }
+            else {
+                lap();
+            }
+        });
+
+
+
+    </script>
+</body>
+
+</html>

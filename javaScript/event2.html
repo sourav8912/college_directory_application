@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        *
+        {
+            margin: 0px;
+        }
+        div
+        {
+         background-color: yellowgreen;
+         text-align: center;
+         padding: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="display">message</h1>
+        <button id="btn">click here</button>
+        <h1></h1>
+    </div>
+    <script>
+        let clickBtn=document.getElementById('btn');
+        clickBtn.addEventListener('click',function()
+        {
+            let h1Tag=document.getElementById('display');
+            h1Tag.textContent="bhabatosh";
+            h1Tag.style.color="black";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1">BMW</h1>
+    <button id="clr">CHANGE COLOR</button>
+    <button id="bg">CHANGE BG COLOR</button>
+    <script>
+let clrBtn=document.getElementById("clr")
+
+clrBtn.addEventListener("click",()=>{
+    setTimeout(()=>{
+    document.getElementById("h1").style.color="blue"
+},1000)
+})
+
+let bgBtn=document.getElementById("bg")
+bgBtn.addEventListener("click",()=>{
+    setInterval(()=>{
+        let bgclr=document.getElementById("h1").style.background
+        if(bgclr=="pink"){
+        document.getElementById("h1").style.background="green"
+        }
+        else{
+            document.getElementById("h1").style.background="pink"  
+        }
+       // let green=Math.trunc(math.random() * 255)
+        //let yellow=Math.trunc(math.random() * 255)
+        //let red=Math.trunc(math.random() * 255)
+
+        //document.getElementById("h1").style.background=`rgb(${green},${yellow},${red})`
+    },1000)
+
+})
+    </script>
+</body>
+</html>

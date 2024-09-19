@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" cellpadding="20" style="border-;">
+       
+        <thead>
+          <td id="allBtn">all</td>
+          <td id="maleBtn">male</td>
+          <td id="femaleBtn">female</td>
+        </thead>
+
+        <tbody>
+            <th>name</th>
+            <th>id</th>
+            <th>gender</th>
+            <th>email</th>
+        </tbody>
+    </table>
+    <script>
+    const allBtn=document.getElementById("all")
+    const maleBtn=document.getElementById("male")
+    const femaleBtn=document.getElementById("female")
+
+    const user=[{name:"a",id:"101", gender:"male",email:"a@gmail.com"},
+    {name:"b",id:"102", gender:"male",email:"b@gmail.com"},
+    {name:"c",id:"103", gender:"female",email:"c@gmail.com"},
+    {name:"d",id:"104", gender:"female",email:"d@gmail.com"},
+    {name:"e",id:"105", gender:"male",email:"e@gmail.com"},
+    {name:"f",id:"106", gender:"male",email:"f@gmail.com"},
+    {name:"g",id:"107", gender:"female",email:"g@gmail.com"},
+    {name:"h",id:"108", gender:"male",email:"h@gmail.com"} ]
+
+    let tableBody =document.getElementById("table-data")
+    function displayData(arr){
+        let str=""
+        arr.forEach((ele)=>
+        {
+            str+=`<tr onclick=("showDetails(${ele,id})")>
+                <td>${ele,id}</td>
+                 <td>${ele,name}</td>
+                  <td>${ele,gender}</td>
+                   <td>${ele,email}</td>
+            </tr>`
+        })
+        tableBody.innerHTML= str
+    }
+    displayData(user)
+
+maleBtn.addEventListener("click",()=>{
+let maleUser =user.filter((ele)=>
+{
+    if(ele.gender=="male"){
+        return ele
+    }
+})
+displayData(maleUser)
+})
+
+femaleBtn.addEventListener("click",()=>{
+    let  femaleUser = user.filter(ele=>ele.gender == "female")
+    displayData(femaleUser)
+})
+
+allBtn.addEventListener("click",()=>{
+displayData(user)
+})
+
+function showDetails(id){
+    let userDetails=user.find((user)=>{
+        if(user.id == id){
+            return user
+        }
+    })
+    let str = ""
+    for(let key is userDetails){
+        console.log();
+    }
+}
+    </script>  
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        *
+        {
+            margin: 10px;
+            text-align: center;
+        }
+        div
+        {
+         background-color: yellowgreen;
+         text-align: center;
+         padding: 20px;
+         color: blueviolet;
+        }
+        div > button:hover
+        {
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="btn">Dec</button>
+        <span id="display">countt</span>
+        <button id="btn">Inc</button>  
+    </div>
+    <script>
+        let countt=0
+        let span=document.getElementById('display')
+        span.textContent=countt;
+        let inc=document.getElementById("inc")
+        let dec=document.getElementById("dec")
+
+        
+    
+        let clickBtn=document.getElementById('btn');
+        clickBtn.addEventListener('click',function()
+        {
+            let h1Tag=document.getElementById('display');
+            h1Tag.textContent="bhabatosh";
+            h1Tag.style.color="black";
+        });
+    </script>
+</body>
+</html>

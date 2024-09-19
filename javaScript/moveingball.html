@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Ball</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ball {
+            /* position: absolute; */
+            position: relative;
+            font-size: 60px;
+            color: rgb(35, 90, 6);
+        }
+
+        .joystick {
+            width: 100%;
+            height: 25vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .joystick button {
+            /* position: relative; */
+            padding: 15px 30px;
+            background-color: goldenrod;
+            font-size: x-large;
+            color: white;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .joystick button:hover {
+            background-color: white;
+            color: goldenrod;
+            box-shadow: 0 0 10px yellowgreen;
+        }
+
+        .t-btn {
+            margin-bottom: 180px;
+            margin-left: 100px;
+        }
+
+        .l-btn {
+            margin-left: -200px;
+        }
+
+        .r-btn {
+            margin-left: 50px;
+        }
+
+        .b-btn {
+            margin-top: 180px;
+            margin-left: -200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ball"><i class="fa-solid fa-basketball"></i></div>
+    </div>
+    <div class="joystick">
+        <div><button class="t-btn"><i class="fa-solid fa-arrow-up"></i></button></div>
+        <div><button class="l-btn"><i class="fa-solid fa-arrow-left"></i></button></div>
+        <div><button class="r-btn"><i class="fa-solid fa-arrow-right"></i></button></div>
+        <div><button class="b-btn"><i class="fa-solid fa-arrow-down"></i></button></div>
+    </div>
+    <script>
+        let ball = document.querySelector('.ball');
+        let x = 0;
+        let y = 0;
+
+        document.querySelector('.t-btn').addEventListener('click', e => {
+            y += 10;
+            ball.style.bottom = `${y}px`
+        });
+
+        document.querySelector('.l-btn').addEventListener('click', e => {
+            x -= 10;
+            ball.style.left = `${x}px`
+        });
+
+        document.querySelector('.r-btn').addEventListener('click', e => {
+            x += 10;
+            ball.style.left = `${x}px`
+        });
+
+        document.querySelector('.b-btn').addEventListener('click', e => {
+            y -= 10;
+            ball.style.bottom = `${y}px`
+        });
+
+        // --Event for Arrow keys-->
+        document.addEventListener("keydown", function (event) {
+            if (event.code === "ArrowUp") {
+                y += 10;
+                ball.style.bottom=`${y}px`;
+                // element.style.margin = `0 0 ${x}px 0`
+            } else if (event.code === "ArrowDown") {
+                // code to handle arrow down key
+                y -= 10;
+                ball.style.bottom = `${y}px`
+            } else if (event.code === "ArrowLeft") {
+                // code to handle arrow left key
+                x -= 10;
+                ball.style.left = `${x}px`
+            } else if (event.code === "ArrowRight") {
+                // code to handle arrow right key
+                x+= 10;
+                ball.style.left = `${x}px`
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .card {
+            width: 500px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .card-header, .card-footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #77ff00;
+            color: palevioletred
+        }
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: calc(100% - 20px);
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            flex: 1;
+            cursor: pointer;
+            background-color:black;
+            color:red;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0057b300;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header">
+            Arithmetic Operations
+        </div>
+        <div class="card-body">
+            <input type="number" id="value1" placeholder="Enter first number">
+            <input type="number" id="value2" placeholder="Enter second number">
+            <div class="buttons">
+                <button onclick="calculate('+')">+</button>
+                <button onclick="calculate('-')">-</button>
+                <button onclick="calculate('')">*</button>
+                <button onclick="calculate('/')">/</button>
+                <button onclick="calculate('%')">%</button>
+            </div>
+        </div>
+        <div class="card-footer" id="result">
+            Result: 
+        </div>
+    </div>
+
+    <script>
+        function calculate(operator) {
+            let num1 = parseFloat(document.getElementById('value1').value);
+            let num2 = parseFloat(document.getElementById('value2').value);
+            let result = 0;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Please enter valid numbers";
+            } else {
+                switch(operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
+                        break;
+                    case '%':
+                        result = num2 !== 0 ? num1 % num2 : "Cannot divide by zero";
+                        break;
+                }
+            }
+            document.getElementById('result').innerText = "Result: " + result;
+        }
+    </script>
+
+</body>
+</html>

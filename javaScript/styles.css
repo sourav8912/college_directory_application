@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0e14ca;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background:goldenrod;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 2px 5px rgb(245, 244, 244);
+    box-sizing:auto;
+    justify-content: center;
+
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #5cb85c;
+    border: none;
+    color:black;
+    cursor: pointer;
+    justify-content: center;
+}
+
+button:hover {
+    background: #ed8106;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#student-view, #faculty-view, #admin-view {
+    margin-top: 20px;
+}

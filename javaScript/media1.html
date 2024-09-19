@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+</head>
+<style>
+    div>h1{
+        display: none;
+    }
+    @media(min-width:0px) and (max-width:500px)
+    {
+        body{
+            background-color: yellow;
+            color: red;
+        }
+        div>h1:nth-child(1){
+            display:block;
+            text-align: left;
+        }
+    }
+
+    div>h1{
+        display: none;
+    }
+    @media(min-width:501px) and (max-width:1000px)
+    {
+        body{
+            background-color:aqua;
+            color: black;
+        }
+        div>h1:nth-child(2){
+            display:block;
+            text-align: center;
+        }
+    }
+
+    div>h1{
+        display: none;
+    }
+    @media(min-width:1001px)
+    {
+        body{
+            background-color:green;
+            color:slateblue;
+        }
+        div>h1:nth-child(3){
+            display:block;
+            text-align: right;
+        }
+    }
+
+</style>
+<body>
+    <div>
+        <h1>1st screen</h1>
+        <h1>2nd screen</h1>
+        <h1>3rd screen</h1>
+    </div>
+    
+    
+</body>
+</html>
